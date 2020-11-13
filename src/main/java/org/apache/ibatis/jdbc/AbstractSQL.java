@@ -221,6 +221,13 @@ public abstract class AbstractSQL<T> {
         // Prevent Synthetic Access
     }
 
+    // sqlClause是构建的关键语句，所以，我们来分析一下这个方法中的参数
+    // 1，builder，SafeAppendable，用于添加，这个不多说，想象成StringBuilder
+    // 2.keyword 表示SQL关键字
+    // 3.parts 用于存储跟在关键词后的属性
+    // 4.open 表示左括号
+    // 5.close 表示右括号
+    // 6.conjunction 连接，即一些JOIN
     private void sqlClause(SafeAppendable builder, String keyword, List<String> parts, String open, String close,
                            String conjunction) {
       if (!parts.isEmpty()) {
